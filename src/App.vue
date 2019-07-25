@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <div id="read">
-        <span class="iconfont icon-brightness"></span>
     </div>
   </div>
 </template>
@@ -10,16 +9,16 @@ import Epub from 'epubjs'
 global.epub = Epub
 
 export default {
-  // name: 'home',
-  // mounted () {
-  //   this.book = new Epub('/java8.epub')
-  //   console.log(this.book)
-  //   console.log(15, Epub)
-  //   this.book.renderTo('read', {
-  //     width: window.innerWidth,
-  //     height: window.innerHeight
-  //   }).display()
-  // }
+  name: 'home',
+  mounted () {
+    this.book = new Epub('/java8.epub')
+    console.log(this.book)
+    console.log(15, Epub)
+    this.book.renderTo('read', {
+      width: window.innerWidth,
+      height: window.innerHeight
+    }).display()
+  }
 }
 </script>
 <style scoped>
