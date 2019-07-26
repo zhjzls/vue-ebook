@@ -1,13 +1,10 @@
 <template>
-  <div class="home">
-    <span class="icon-bookmark"></span>
-    <span class="text">abcdefg</span>
-    <span class="text">ABCDEFG</span>
-    <div id="read">
-    </div>
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import Epub from 'epubjs'
 global.epub = Epub
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let fontSize = window.innerWidth / 10
   html.style.fontSize = fontSize + 'px'
 })
+
 export default {
   name: 'home',
   mounted () {
@@ -25,21 +23,22 @@ export default {
     //   width: window.innerWidth,
     //   height: window.innerHeight
     // }).display()
-    this.$store.dispatch('setTest', 12).then(() => {
-      console.log('异步处理结束', this.$store.state.test)
-    })
+    // console.log(28, this.$store)
+    // console.log(31, this.test)
+    // this.$store.dispatch('setTest', 12).then(() => {
+    //   console.log('异步处理结束', this.$store.state.book.test)
+    // })
+  },
+  computed: {
+    ...mapGetters(['test'])
   }
 }
 </script>
-<style lang='scss' scoped>
+<style lang='scss'>
 @import './assets/styles/global.scss';
-  .icon-brightness{
-    color:red;
-    font-size: 1rem;
-  }
-  .text{
-    font-family: 'Days One';
-    font-size: px2rem(20);
-    color: orange;
+  #app{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 </style>
