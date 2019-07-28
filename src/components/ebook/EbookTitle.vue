@@ -20,25 +20,22 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { ebookMixin } from '../../utils/mixin'
 export default {
   name: 'ebook-title',
-  data() { 
+  data () {
     return {
-        menuVisible: true
     }
   },
+  mixins: [ebookMixin],
   methods: {
-      back() {
+      back () {
           console.log('back')
       },
-      gotoBookStore() {
+      gotoBookStore () {
           console.log('get book store')
       }
-  },
-  computed: {
-    //   ...mapGetters(['menuVisible'])
-  },
+  }
  }
 </script>
 
@@ -52,6 +49,7 @@ export default {
     display: flex;
     width: 100%;
     height: px2rem(48);
+    background: #fff;
     box-shadow: 0 px2rem(8) px2rem(8) rgba(0, 0, 0, .15);
     font-size: px2rem(22);
     .left {
