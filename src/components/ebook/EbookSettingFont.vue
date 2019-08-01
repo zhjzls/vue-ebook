@@ -3,7 +3,7 @@
     <div class="setting-wrapper" v-show="menuVisible && settingVisible === 0">
       <div class="setting-font-size">
         <div class="preview" ref="left">
-          <!-- <span :style="styleLeft" ref="leftText">A</span> -->
+          <span :style="styleLeft" ref="leftText">A</span>
         </div>
         <div class="select">
           <div class="select-wrapper" v-for="(item, index) in fontSizeList" :key="index"
@@ -18,17 +18,18 @@
           </div>
         </div>
         <div class="preview" ref="right">
-          <!-- <span :style="styleRight" ref="rightText">A</span> -->
+          <span :style="styleRight" ref="rightText">A</span>
         </div>
       </div>
       <div class="setting-font-family" @click.stop="showFontFamilySetting">
         <div class="setting-font-family-text-wrapper">
-          <!-- <span class="setting-font-family-text">{{defaultFontFamily}}</span> -->
+          <span class="setting-font-family-text">{{defaultFontFamily}}</span>
         </div>
         <div class="setting-font-family-icon-wrapper">
           <span class="icon-forward"></span>
         </div>
       </div>
+      <ebook-setting-font-popup></ebook-setting-font-popup>
     </div>
   </transition>
 </template>
@@ -36,8 +37,23 @@
 <script>
 import { ebookMixin } from '../../utils/mixin'
 import { FONT_SIZE_LIST } from '../../utils/book'
+import EbookSettingFontPopup from './EbookSettingFontPopup'
 export default {
+    components: {
+      EbookSettingFontPopup
+    },
     mixins: [ebookMixin],
+    methods: {
+      setFontSize(fontSize) {
+        console.log(43, fontSize)
+        this.setDefaultFontSize(fontSize)
+        this.currentBook.rendition.themes.fontSize(fontSize)
+      },
+      showFontFamilySetting() {
+        console.log(this.fontFamilyVisible)
+        this.setFontFamilyVisible(!this.fontFamilyVisible)
+      }
+    },
     data() {
         return {
             fontSizeList: FONT_SIZE_LIST
@@ -50,13 +66,14 @@ export default {
 
   .setting-wrapper {
     position: absolute;
-    bottom: px2rem(48);
+    bottom: px2rem(46);
     left: 0;
     z-index: 190;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: px2rem(90);
+    background: #fff;
     box-shadow: 0 px2rem(-8) px2rem(8) rgba(0, 0, 0, .15);
     .setting-font-size {
       flex: 2;
@@ -89,7 +106,7 @@ export default {
           }
           .line {
             flex: 1;
-            height: 0;
+            height: px2rem(2);
           }
           .point-wrapper {
             position: relative;
@@ -108,6 +125,7 @@ export default {
               .small-point {
                 width: px2rem(5);
                 height: px2rem(5);
+                background-color: #333;
                 border-radius: 50%;
               }
             }

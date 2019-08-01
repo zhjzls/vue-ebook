@@ -5,7 +5,23 @@ export const ebookMixin = {
             'fileName',
             'menuVisible',
             'settingVisible',
-            'defaultFontSize'
+            'defaultFontSize',
+            'defaultFontFamily',
+            'fontFamilyVisible',
+            'defaultTheme',
+            'bookAvailable',
+            'progress',
+            'section',
+            'isPaginating',
+            'currentBook',
+            'navigation',
+            'cover',
+            'metadata',
+            'paginate',
+            'pagelist',
+            'offsetY',
+            'isBookmark',
+            'speakingIconBottom'
         ])
     },
     methods: {
@@ -13,7 +29,23 @@ export const ebookMixin = {
             'setFileName',
             'setMenuVisible',
             'setSettingVisible',
-            'setDefaultFontSize'
+            'setDefaultFontSize',
+            'setDefaultFontFamily',
+            'setFontFamilyVisible',
+            'setDefaultTheme',
+            'setBookAvailable',
+            'setProgress',
+            'setSection',
+            'setIsPaginating',
+            'setCurrentBook',
+            'setNavigation',
+            'setCover',
+            'setMetadata',
+            'setPaginate',
+            'setPagelist',
+            'setOffsetY',
+            'setIsBookmark',
+            'setSpeakingIconBottom'
         ])
     }
 }
